@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+3.times do
+  follower = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
+  3.times do
+    following = User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
+    Connection.create(follower: follower, following: following)
+    print "************************* #{follower.name} is following #{following.name} *******************"
+  end
+end
+
